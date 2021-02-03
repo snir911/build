@@ -174,6 +174,10 @@ func GenerateTaskSpec(
 	return &generatedTaskSpec, nil
 }
 
+// podtemplate should be add here probably
+// https://github.com/tektoncd/pipeline/blob/master/docs/podtemplates.md
+//
+
 // GenerateTaskRun creates a Tekton TaskRun to be used for a build run
 func GenerateTaskRun(
 	cfg *config.Config,
@@ -273,6 +277,9 @@ func GenerateTaskRun(
 	}
 
 	expectedTaskRun.Spec.Timeout = effectiveTimeout(build, buildRun)
+
+	runtimeStr := "kata"
+	expectedTaskRun.Spec.PodTemplate = &v1beta1.PodTemplate{RuntimeClassName: &runtimeStr}
 
 	var inputParams []v1beta1.Param
 	if build.Spec.BuilderImage != nil {
