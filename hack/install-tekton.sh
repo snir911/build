@@ -17,6 +17,8 @@ TEKTON_HOST_PATH="tektoncd/pipeline/releases/download"
 
 echo "# Deploying Tekton Pipelines Operator '${TEKTON_VERSION}'"
 
+# https://github.com/tektoncd/pipeline/issues/3452
+echo "https://raw.githubusercontent.com/openshift/tektoncd-pipeline/release-${TEKTON_VERSION}/openshift/release/tektoncd-pipeline-${TEKTON_VERSION}.yaml"
 kubectl apply \
-    --filename="https://${TEKTON_HOST}/${TEKTON_HOST_PATH}/${TEKTON_VERSION}/release.yaml" \
+    --filename="https://raw.githubusercontent.com/openshift/tektoncd-pipeline/release-${TEKTON_VERSION}/openshift/release/tektoncd-pipeline-${TEKTON_VERSION}.yaml" \
     --output="yaml"
