@@ -5,11 +5,13 @@ metadata:
   name: buildah-golang-build
 spec:
   source:
-    url: https://github.com/sbose78/taxi
+    url: https://github.com/snir911/taxi
     revision: master
   strategy:
     name: buildah
     kind: ClusterBuildStrategy
   dockerfile: Dockerfile
   output:
-    image: image-registry.openshift-image-registry.svc:5000/build-examples/taxi-app
+    credentials:
+      name: snir-pull-secret
+    image: quay.io/snir/texi
