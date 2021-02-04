@@ -16,7 +16,7 @@ spec:
       serviceAccountName: build-operator
       containers:
         - name: build-operator
-          image: quay.io/shipwright/shipwright-operator:latest
+          image: quay.io/snir/build-operator:latest
           command:
           - build-operator
           imagePullPolicy: Always
