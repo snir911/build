@@ -156,6 +156,11 @@ func GenerateTaskSpec(
 			if newVolume {
 				vols = append(vols, corev1.Volume{
 					Name: volumeInBuildStrategy.Name,
+					VolumeSource: corev1.VolumeSource{
+						EmptyDir: &corev1.EmptyDirVolumeSource{
+							Medium: "Memory",
+						},
+					},
 				})
 			}
 
